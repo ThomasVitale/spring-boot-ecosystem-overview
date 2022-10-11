@@ -1,0 +1,6 @@
+server:
+    port: 8080
+    tomcat:
+        connection-timeout: 5s
+        threads:
+            max: 200

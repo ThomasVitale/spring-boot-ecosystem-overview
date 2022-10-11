@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+
+  demo-jdbc:
+    image: demo-jdbc:0.0.1-SNAPSHOT
+    container_name: demo-jdbc
+    depends_on:
+      - postgresql
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/demo
+
+  postgresql:
+    image: "postgres:14"
+    container_name: "postgresql"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=demo

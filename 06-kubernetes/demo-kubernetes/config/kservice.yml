@@ -1,0 +1,16 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: demo-kubernetes
+spec:
+  template:
+    spec:
+      containers:
+        - name: demo-kubernetes
+          image: ghcr.io/thomasvitale/demo-kubernetes:v1
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness

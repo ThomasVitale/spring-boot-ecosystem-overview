@@ -1,0 +1,16 @@
+spring:
+    cloud:
+        function:
+            definition: uppercase|sentence
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-components: always
+            show-details: always
+            probes:
+                enabled: true

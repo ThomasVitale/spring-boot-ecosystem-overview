@@ -1,0 +1,23 @@
+spring:
+    application:
+        name: demo-observability
+    datasource:
+        url: jdbc:postgresql://localhost:5432/demo
+        username: user
+        password: password
+
+logging:
+    pattern:
+        level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-components: always
+            show-details: always
+            probes:
+                enabled: true

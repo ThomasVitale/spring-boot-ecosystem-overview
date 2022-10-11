@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+
+  demo-r2dbc:
+    image: demo-r2dbc:0.0.1-SNAPSHOT
+    container_name: demo-r2dbc
+    depends_on:
+      - postgresql
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_R2DBC_URL=r2dbc:postgresql://postgresql:5432/demo
+
+  postgresql:
+    image: "postgres:14"
+    container_name: "postgresql"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=demo
